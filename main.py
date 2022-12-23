@@ -1,6 +1,6 @@
 from tkinter import *
 root = Tk()
-root.geometry("500x500")
+# root.geometry("500x500")
 root.title("CALCULATOR")
 root.resizable(False, False)
 l = Label(text="CALCULATOR", font="Monetizer 30")
@@ -31,28 +31,28 @@ def add():
     inputNum1= int(inp1.get())
     global inp2
     inputNum2= int(inp2.get())
-    print(inputNum1+inputNum2)
+    answer.config(text=inputNum1+inputNum2)
 def subtract():
     global inp1
     inputNum1= int(inp1.get())
     global inp2
     inputNum2= int(inp2.get())
-    print(inputNum1-inputNum2)
+    answer.config(text=inputNum1-inputNum2)
 def divide():
     global inp1
     inputNum1= int(inp1.get())
     global inp2
     inputNum2= int(inp2.get())
     try:
-        print(inputNum1/inputNum2)
+        answer.config(text=round(inputNum1/inputNum2, 2))
     except ZeroDivisionError as e:
-        print("undefined")
+        answer.config(text="(undefined)")
 def multiply():
     global inp1
     inputNum1= int(inp1.get())
     global inp2
     inputNum2= int(inp2.get())
-    print(inputNum1*inputNum2)
+    answer.config(text=inputNum1*inputNum2)
     
 
 frame3 = Frame(root, borderwidth=4, relief=SUNKEN)
@@ -65,6 +65,8 @@ subtract.pack(side=LEFT)
 divide.pack(side=LEFT)
 multiply.pack(side=LEFT)
 close = Button(root, fg = "blue", text="CLOSE CALCULATOR", font="Monetizer 20", command = quit)
+answer = Label(root, width= 30, font=15, text="")
+answer.pack()
 close.pack(side=BOTTOM)
 frame3.pack(side=LEFT, anchor='nw', padx=200)
 
